@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    'https://fakebook-at9w.onrender.com'
+    'https://master--fakebooksocial.netlify.app'
     
 ]
 
