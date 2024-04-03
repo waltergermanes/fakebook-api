@@ -33,7 +33,7 @@ mongoose.connection.once("open", ()=>{
    
     const io = require("socket.io")(expressServer, {
         cors: {
-          origin: "https://master--fakebooksocial.netlify.app",
+          origin: "https://fakebooksocial.netlify.app",
         },
       });
     
