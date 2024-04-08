@@ -39,10 +39,8 @@ const getUserFollowing = asynchandler(async(req, res)=>{
     const { id } = req.params
      const user = await User.findById(id)
      const userFollowing = await Promise.all(
-      user.following.map(async(id)=>{
-          const following = await User.findById(id)
-          const { _id, firstName, lastName, profilePhoto } = following._doc
-          return {  _id, firstName, lastName, profilePhoto}
+      user?.following?.map(async(id)=>{
+          return await User.findById(id, {_id: 1, firstName: 1, lastName: 1, profilePhoto:1})
       })
      )
      res.status(200).json(userFollowing)
