@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    'http://localhost:5174'
+    'https://fakebooksocial.netlify.app'
     
 ]
 
