@@ -49,7 +49,7 @@ const getUserFollowing = asynchandler(async(req, res)=>{
   })
  const getSuggestionUsers = asynchandler(async(req, res)=>{
     const userId = req.params.id
-    const allUsers = await User.find()
+    const allUsers = await User.find({ emailVerified: true })
     const userFound = await User.findOne({ _id: userId }) 
     const userFollowing = userFound.following
   

@@ -9,7 +9,7 @@ require("dotenv").config()
 
 const loginUser = asynchandler(async(req, res) =>{
  const { email , password } = req.body
-console.log(req.body)
+
  if(!email || !password)return res.status(400).json({ 'message': 'Email and password are required.' });
  const userFound = await User.findOne({ email }).exec()
 
@@ -107,10 +107,9 @@ const registerUser = asynchandler(async(req, res)=>{
   if(!email || !password || !lastName || !firstName) return res.sendStatus(400)
   const user = await User.findOne({ email });
 
-  if (user)
-			return res
-				.status(409)
-				.send({ message: "User with given email already Exist!" })
+  if (user){
+    return res.status(409).json({ message: "User is already taken!" })
+  }
 
   const hashPwd = await bcrypt.hash(password, 10)// salt rounds
 
